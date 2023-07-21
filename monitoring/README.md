@@ -13,7 +13,8 @@ Start postgres exporter:
     docker run \
       --net=host \
       -d \
-      -e DATA_SOURCE_NAME="postgresql://postgres:postgres@localhost:5432/postgres?sslmode=disable" \
+      -e DATA_SOURCE_NAME="postgresql://postgres:postgres@127.0.0.1:5432/testdb?sslmode=disable" \
+      --name postgres-exporter \
       quay.io/prometheuscommunity/postgres-exporter
 
 
