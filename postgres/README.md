@@ -6,10 +6,10 @@ Build PostgreSQL image:
 
 Run locally:  
 
-    $ chmod 777 "$PWD"/logs/
+    $ chmod 777 "$PWD"/postgres/logs/
 
     $ docker run -d -p 5432:5432 --cpus=0.5 -m=2g --network host \
       --name postgres-test --user 0 \
-      -v "$PWD"/postgresql.conf:/etc/postgresql/postgresql.conf \
-      -v "$PWD"/logs:/etc/postgresql/pg_log \
+      -v "$PWD"/postgres/postgresql.conf:/etc/postgresql/postgresql.conf \
+      -v "$PWD"/postgres/logs:/etc/postgresql/pg_log \
       postgres-test -c 'config_file=/etc/postgresql/postgresql.conf'
