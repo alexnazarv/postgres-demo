@@ -1,0 +1,56 @@
+time=2023-07-20 17:20:53 UTC, db=, usr=, client= , app= LOG:  starting PostgreSQL 15.2 on x86_64-pc-linux-musl, compiled by gcc (Alpine 12.2.1_git20220924-r4) 12.2.1 20220924, 64-bit
+time=2023-07-20 17:20:53 UTC, db=, usr=, client= , app= LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+time=2023-07-20 17:20:53 UTC, db=, usr=, client= , app= LOG:  database system was shut down at 2023-07-20 17:20:53 UTC
+time=2023-07-20 17:20:53 UTC, db=, usr=, client= , app= LOG:  database system is ready to accept connections
+time=2023-07-20 17:20:53 UTC, db=[unknown], usr=[unknown], client=[local] , app=[unknown] LOG:  connection received: host=[local]
+time=2023-07-20 17:20:53 UTC, db=postgres, usr=postgres, client=[local] , app=[unknown] LOG:  connection authorized: user=postgres database=postgres application_name=psql
+time=2023-07-20 17:20:53 UTC, db=postgres, usr=postgres, client=[local] , app=psql LOG:  statement: SELECT 1 FROM pg_database WHERE datname = 'postgres' ;
+time=2023-07-20 17:20:53 UTC, db=postgres, usr=postgres, client=[local] , app=psql LOG:  duration: 2.121 ms
+time=2023-07-20 17:20:53 UTC, db=postgres, usr=postgres, client=[local] , app=psql LOG:  QUERY STATISTICS
+time=2023-07-20 17:20:53 UTC, db=postgres, usr=postgres, client=[local] , app=psql DETAIL:  ! system usage stats:
+	!	0.000000 s user, 0.002136 s system, 0.002138 s elapsed
+	!	[0.004013 s user, 0.014175 s system total]
+	!	12784 kB max resident size
+	!	0/8 [0/384] filesystem blocks in/out
+	!	80/161 [222/2526] page faults/reclaims, 0 [0] swaps
+	!	0 [0] signals rcvd, 0/0 [0/0] messages rcvd/sent
+	!	0/0 [1/0] voluntary/involuntary context switches
+time=2023-07-20 17:20:53 UTC, db=postgres, usr=postgres, client=[local] , app=psql STATEMENT:  SELECT 1 FROM pg_database WHERE datname = 'postgres' ;
+time=2023-07-20 17:20:53 UTC, db=postgres, usr=postgres, client=[local] , app=psql LOG:  disconnection: session time: 0:00:00.018 user=postgres database=postgres host=[local]
+time=2023-07-20 17:20:53 UTC, db=[unknown], usr=[unknown], client=[local] , app=[unknown] LOG:  connection received: host=[local]
+time=2023-07-20 17:20:53 UTC, db=postgres, usr=postgres, client=[local] , app=[unknown] LOG:  connection authorized: user=postgres database=postgres application_name=psql
+time=2023-07-20 17:20:53 UTC, db=postgres, usr=postgres, client=[local] , app=psql LOG:  statement: CREATE DATABASE testdb;
+time=2023-07-20 17:20:53 UTC, db=postgres, usr=postgres, client=[local] , app=psql LOG:  duration: 112.649 ms
+time=2023-07-20 17:20:53 UTC, db=postgres, usr=postgres, client=[local] , app=psql LOG:  QUERY STATISTICS
+time=2023-07-20 17:20:53 UTC, db=postgres, usr=postgres, client=[local] , app=psql DETAIL:  ! system usage stats:
+	!	0.006855 s user, 0.051588 s system, 0.112679 s elapsed
+	!	[0.006855 s user, 0.054846 s system total]
+	!	32112 kB max resident size
+	!	0/12432 [0/12432] filesystem blocks in/out
+	!	3392/1765 [3402/2302] page faults/reclaims, 0 [0] swaps
+	!	0 [0] signals rcvd, 0/0 [0/0] messages rcvd/sent
+	!	11/5 [12/5] voluntary/involuntary context switches
+time=2023-07-20 17:20:53 UTC, db=postgres, usr=postgres, client=[local] , app=psql STATEMENT:  CREATE DATABASE testdb;
+time=2023-07-20 17:20:53 UTC, db=[unknown], usr=[unknown], client=[local] , app=[unknown] LOG:  connection received: host=[local]
+time=2023-07-20 17:20:53 UTC, db=testdb, usr=postgres, client=[local] , app=[unknown] LOG:  connection authorized: user=postgres database=testdb application_name=psql
+time=2023-07-20 17:20:53 UTC, db=testdb, usr=postgres, client=[local] , app=psql LOG:  statement: CREATE EXTENSION pg_stat_statements;
+time=2023-07-20 17:20:53 UTC, db=postgres, usr=postgres, client=[local] , app=psql LOG:  disconnection: session time: 0:00:00.126 user=postgres database=postgres host=[local]
+time=2023-07-20 17:20:54 UTC, db=testdb, usr=postgres, client=[local] , app=psql LOG:  duration: 60.900 ms
+time=2023-07-20 17:20:54 UTC, db=testdb, usr=postgres, client=[local] , app=psql LOG:  QUERY STATISTICS
+time=2023-07-20 17:20:54 UTC, db=testdb, usr=postgres, client=[local] , app=psql DETAIL:  ! system usage stats:
+	!	0.009055 s user, 0.003611 s system, 0.060919 s elapsed
+	!	[0.018059 s user, 0.003611 s system total]
+	!	20112 kB max resident size
+	!	0/312 [0/688] filesystem blocks in/out
+	!	14/3569 [14/5675] page faults/reclaims, 0 [0] swaps
+	!	0 [0] signals rcvd, 0/0 [0/0] messages rcvd/sent
+	!	2/4 [3/7] voluntary/involuntary context switches
+time=2023-07-20 17:20:54 UTC, db=testdb, usr=postgres, client=[local] , app=psql STATEMENT:  CREATE EXTENSION pg_stat_statements;
+time=2023-07-20 17:20:54 UTC, db=testdb, usr=postgres, client=[local] , app=psql LOG:  disconnection: session time: 0:00:00.070 user=postgres database=testdb host=[local]
+time=2023-07-20 17:20:54 UTC, db=, usr=, client= , app= LOG:  received fast shutdown request
+time=2023-07-20 17:20:54 UTC, db=, usr=, client= , app= LOG:  aborting any active transactions
+time=2023-07-20 17:20:54 UTC, db=, usr=, client= , app= LOG:  background worker "logical replication launcher" (PID 44) exited with exit code 1
+time=2023-07-20 17:20:54 UTC, db=, usr=, client= , app= LOG:  shutting down
+time=2023-07-20 17:20:54 UTC, db=, usr=, client= , app= LOG:  checkpoint starting: shutdown immediate
+time=2023-07-20 17:20:54 UTC, db=, usr=, client= , app= LOG:  checkpoint complete: wrote 924 buffers (5.6%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.026 s, sync=0.062 s, total=0.101 s; sync files=250, longest=0.044 s, average=0.001 s; distance=4320 kB, estimate=4320 kB
+time=2023-07-20 17:20:54 UTC, db=, usr=, client= , app= LOG:  database system is shut down
