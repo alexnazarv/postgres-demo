@@ -43,6 +43,7 @@ Indexes: Hash, B-tree, GIN, BRIN
 
     create index ...
 
+Добавить гистограмму по каждому из измерений
 ### Cleaning out container and image:
 
     docker stop test-postgres && docker rmi test-postgres
