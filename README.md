@@ -9,7 +9,8 @@ Run locally:
     $ mkdir "$PWD"/postgres/logs/ && chmod 777 "$PWD"/postgres/logs/
 
     $ docker run -d -p 5432:5432 --cpus=0.5 -m=2g --network host \
-      --name postgres-test --user 0 \
+      --name postgres-test \
+      --user 0 \
       -v "$PWD"/postgres/postgresql.conf:/etc/postgresql/postgresql.conf \
       -v "$PWD"/postgres/logs:/etc/postgresql/pg_log \
       postgres-test -c 'config_file=/etc/postgresql/postgresql.conf'
@@ -19,17 +20,28 @@ Run locally:
 
 ## Uploading data:
     tbd
+    10 000 000 строк
 
 ## Index tests:
+Создать таблицу с результатами:
+| IndexType | DataType | IndexWeight | CreationTime | = | > | like |
+|-----------|----------|-------------|--------------|---|---|------|
+| Hash      | varchar  |      100    |     10       | 1 | 1 |  1   |
 
-### Hash
-    tbd
+    CREATE TABLE measured_time (
+        IndexType    VARCHAR,
+        DataType     VARCHAR
+        IndexWeight  INTEGER
+        CreationTime INTEGER
+        "="          INTEGER
+        ">"          INTEGER
+        "like"       INTEGER
+    )
+    
+### Tests
+Indexes: Hash, B-tree, GIN, BRIN
 
-### B-tree
-    tbd
-
-### Bitmap
-    tbd
+    create index ...
 
 ## Cleaning out container and image:
 
