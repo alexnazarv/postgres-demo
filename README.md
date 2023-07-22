@@ -1,4 +1,4 @@
-# DB preparing:
+## DB preparing:
 
 Build PostgreSQL image:
 
@@ -16,13 +16,13 @@ Run locally:
       postgres-test -c 'config_file=/etc/postgresql/postgresql.conf'
 
 
-# Performance testing PostgreSQL indexes
+## Performance testing PostgreSQL indexes
 
-## Uploading data:
+### Uploading data:
     tbd
     10 000 000 строк
 
-## Index tests:
+### Index tests:
 Создать таблицу с результатами:
 | IndexType | DataType | IndexWeight | CreationTime | = | > | like |
 |-----------|----------|-------------|--------------|---|---|------|
@@ -38,17 +38,17 @@ Run locally:
         "like"       INTEGER
     )
     
-### Tests
+#### Tests
 Indexes: Hash, B-tree, GIN, BRIN
 
     create index ...
 
-## Cleaning out container and image:
+### Cleaning out container and image:
 
     docker stop test-postgres && docker rmi test-postgres
 
 
-# Monitoring
+## Monitoring
 
 Start prometheus:
 
