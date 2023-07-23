@@ -15,16 +15,15 @@ Run locally:
       -v "$PWD"/postgres/logs:/etc/postgresql/pg_log \
       postgres-test -c 'config_file=/etc/postgresql/postgresql.conf'
 
-
-## Performance testing PostgreSQL indexes
-
-### Uploading data:
+Uploading data:
 8 000 000 строк
 
     $ python3 "$PWD"/inserter/main.py
 
-### Index tests:
-Создать таблицу с результатами:
+
+## Performance testing PostgreSQL indexes
+
+#### Creating results table:
 | IndexType | DataType |  IndexSize  | CreationDuration | = | > | like | in   |
 |-----------|----------|-------------|------------------|---|---|------|------|
 | Hash      | varchar  |      100    |        10        | 1 |   |  1   |  2   |
@@ -45,7 +44,7 @@ Indexes: Hash, B-tree, GIN, BRIN
 
     $ python "$PWD"/index_performance_test/main.py
 
-Добавить гистограмму по каждому из измерений
+Добавить гистограмму по каждому из измерений (сделать в файле, заскринить и загрузить скриншот в репозиторий, чтобы показать в ридми)
 ### Cleaning out container and image:
 
     docker stop test-postgres && docker rmi test-postgres
