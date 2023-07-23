@@ -44,7 +44,12 @@ Indexes: Hash, B-tree, GIN, BRIN
 
     $ python "$PWD"/index_performance_test/main.py
 
+#### Visualisation
+
+<!-- PNG -->
+
 Добавить гистограмму по каждому из измерений (сделать в файле, заскринить и загрузить скриншот в репозиторий, чтобы показать в ридми)
+
 ### Cleaning out container and image:
 
     docker stop test-postgres && docker rmi test-postgres
