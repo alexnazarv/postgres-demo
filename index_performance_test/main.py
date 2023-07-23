@@ -1,21 +1,21 @@
 from lib import indexes_check
 from connection import make_conn
 
-TABLE_INDEXED = 'testdb.public.test_table'
-COLUMNS_INDEXED = ['varchar0', 'integer0', 'date0']
+TABLE_INDEXED = 'test_table'
+TABLE_STATISTIC = 'measured'
 
-TABLE_STATISTIC = 'testdb.public.measured'
-INDEXES = ['hash', 'B-tree', 'GIN', 'BRIN']
+COLUMNS_INDEXED = ['varchar0', 'integer0', 'date0']
+INDEXES = ['gin', 'brin', 'gist', 'bloom', 'rum', 'hash', 'btree']
 
 OPERAND_CHECK_VALUES = {'varchar': 'Allyson Lowe',
                         'integer': 23579207,
                         'date': '2023-11-29'}
 
-
-
-# if __name__ == '__main__':
-#     with make_conn() as cursor:
-#         for index in INDEXES:
-#             indexes_check(index=index, cursor=cursor, columns_indexed=COLUMNS_INDEXED)
-
+if __name__=='__main__':
+    with make_conn() as cursor:
+        for index in INDEXES:
+            indexes_check(index_type=index, cursor=cursor,
+                          columns_indexed=COLUMNS_INDEXED,
+                          table_indexed=TABLE_INDEXED,
+                          table_statistic=TABLE_STATISTIC)
 
