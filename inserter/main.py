@@ -9,15 +9,15 @@ from connection import AbstractConnection
 
 from inserter import Inserter
 
-CHUNK_SIZE: int = 100
-COUNT_ROWS: int = 1000
+CHUNK_SIZE: int = 500000
+COUNT_ROWS: int = 8000000
 CHUNKS_NUM = ceil(COUNT_ROWS / CHUNK_SIZE)
 ISOLATION_LEVEL='SERIALIZABLE'
 
 DATA_CONFIG: Optional[Dict[str, List[Tuple[int, Any]]]] = \
                     {
-                    'varchar': [(10, BASE_PARAMS)],
-                    'integer':[(4000, (1, 100000))],
+                    'varchar': [(11000, BASE_PARAMS)],
+                    'integer':[(2000000, (1, 50000000))],
                     'date': [(300, (date(2023,1,1), date(2023,12,31)))]
                     }
 DATA_CONFIG = get_data_config(DATA_CONFIG)

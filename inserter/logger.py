@@ -14,7 +14,7 @@ def create_logger(path_to_file: str = os.path.dirname(__file__) + '/logs/log_dat
     logger.setLevel(level)
     formatter = Formatter(fmt=FMT)
 
-    if stream_handler:
+    if stream_handler is True:
         handler = StreamHandler(stream=sys.stdout)    
     else:
         handler = FileHandler(filename=path_to_file)

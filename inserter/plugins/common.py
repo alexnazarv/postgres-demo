@@ -10,7 +10,7 @@ logger_s = create_logger(loggername=os.path.basename(__file__).split('.')[0],
                          stream_handler=True)
 
 logger_f = create_logger(loggername=os.path.basename(__file__).split('.')[0] + '_f',
-                         path_to_file='logs/log_executes.log')
+                         path_to_file='inserter/logs/log_executes.log')
 
 
 def timed(func):

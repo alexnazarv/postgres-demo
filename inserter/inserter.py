@@ -4,7 +4,6 @@ from typing import Any, Tuple
 from configs.config_data import DATA_CONFIG
 from connection import AbstractConnection
 from data_miner import DataMiner
-from plugins.common import timed
 from tqdm import tqdm
 
 

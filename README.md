@@ -2,7 +2,7 @@
 
 Build PostgreSQL image:
 
-    docker build "$PWD"/postgers/Dockerfile -t test-postgres
+    $ docker build "$PWD"/postgers/Dockerfile -t test-postgres
 
 Run locally:  
 
@@ -19,29 +19,31 @@ Run locally:
 ## Performance testing PostgreSQL indexes
 
 ### Uploading data:
-    tbd
-    10 000 000 строк
+8 000 000 строк
+
+    $ python3 "$PWD"/inserter/main.py
 
 ### Index tests:
 Создать таблицу с результатами:
-| IndexType | DataType | IndexWeight | CreationTime | = | > | like |
-|-----------|----------|-------------|--------------|---|---|------|
-| Hash      | varchar  |      100    |     10       | 1 | 1 |  1   |
+| IndexType | DataType |  IndexSize  | CreationDuration | = | > | like | in   |
+|-----------|----------|-------------|------------------|---|---|------|------|
+| Hash      | varchar  |      100    |        10        | 1 |   |  1   |  2   |
 
-    CREATE TABLE measured_time (
+    CREATE TABLE testdb.public.measured_time (
         IndexType    VARCHAR,
-        DataType     VARCHAR
-        IndexWeight  INTEGER
-        CreationTime INTEGER
-        "="          INTEGER
-        ">"          INTEGER
-        "like"       INTEGER
+        DataType     VARCHAR,
+        IndexWeight  FLOAT,
+        CreationTime FLOAT,
+        "="          FLOAT,
+        ">"          FLOAT,
+        "like"       FLOAT,
+        "in"         FLOAT
     )
-    
+
 #### Tests
 Indexes: Hash, B-tree, GIN, BRIN
 
-    create index ...
+    $ python "$PWD"/index_performance_test/main.py
 
 Добавить гистограмму по каждому из измерений
 ### Cleaning out container and image:
@@ -57,7 +59,7 @@ Start prometheus:
       -p 9090:9090 \
       -d \
       --network host \
-      -v "$PWD"/prometheus.yml:/etc/prometheus/prometheus.yml \
+      -v "$PWD"/postgres/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml \
       --name prometheus \
       prom/prometheus
 

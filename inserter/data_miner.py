@@ -4,14 +4,16 @@ from datetime import date, timedelta
 from typing import Any, Dict, List, Tuple
 
 import requests
-from configs.config_data import BaseDataConfig
 from logger import create_logger
 
-logger = create_logger(loggername=os.path.basename(__file__).split('.')[0])
+logger_f = create_logger(loggername=os.path.basename(__file__).split('.')[0] + '_f',
+                         path_to_file=os.path.dirname(__file__) + '/logs/log_data.log')
 
+logger_s = create_logger(loggername=os.path.basename(__file__).split('.')[0] + '_s',
+                         stream_handler=True)
 
 class DataMiner(object):
-    def __init__(self, data_config: BaseDataConfig = None, url:str = None):
+    def __init__(self, data_config = None, url:str = None):
         self.__url = url
         self.__data_config = data_config
 
@@ -20,18 +22,31 @@ class DataMiner(object):
         columns = []
         varchar_columns = self.__data_config.get('varchar')
 
+        # if varchar_columns:
+        #     for col in varchar_columns:
+        #         num_of_unique_names = col[0]
+        #         params = col[1]
+        #         self.__url = self.__url + '%s?' %num_of_unique_names
+        #         try:
+        #             names = requests.get(url=self.__url, 
+        #                                  params=params) \
+        #                             .json()
+        #             logger_f.info(names)
+        #             columns.append(names)
+        #             return columns
+        #         except Exception:
+        #             response = requests.get(url=self.__url, 
+        #                                     params=params)
+        #             for logger in [logger_s, logger_f]:
+        #                 logger.error('Error: status code: %s, text: %s', response.status_code, response.text)
+
         if varchar_columns:
             for col in varchar_columns:
-                num_of_unique_names = col[0]
-                params = col[1]
-                self.__url = self.__url + '%s?' %num_of_unique_names
-                names = requests.get(url=self.__url, 
-                                     params=params) \
-                                .json()
-                logger.info(names)
-                columns.append(names)
-        return columns
-
+                with open('./inserter/names.txt', 'r') as file:
+                    names = [name.strip('\n') for name in file.readlines()]
+                    columns.append(names)
+            return columns
+                
 
     def getting_integer_columns(self):
         columns = []
