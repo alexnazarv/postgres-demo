@@ -10,7 +10,7 @@ from connection import AbstractConnection
 from inserter import Inserter
 
 CHUNK_SIZE: int = 500000
-COUNT_ROWS: int = 8000000
+COUNT_ROWS: int = 20000000
 CHUNKS_NUM = ceil(COUNT_ROWS / CHUNK_SIZE)
 ISOLATION_LEVEL='SERIALIZABLE'
 

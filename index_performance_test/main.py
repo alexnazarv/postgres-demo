@@ -1,15 +1,16 @@
 from lib import indexes_check
-from connection import make_conn
+from conn import make_conn
 
 TABLE_INDEXED = 'test_table'
 TABLE_STATISTIC = 'measured'
 
 COLUMNS_INDEXED = ['varchar0', 'integer0', 'date0']
-INDEXES = ['gin', 'brin', 'gist', 'bloom', 'rum', 'hash', 'btree']
+# INDEXES = ['gin', 'gist', 'bloom', 'rum', 'brin', 'hash', 'btree']
+INDEXES = ['brin', 'hash', 'btree']
 
-OPERAND_CHECK_VALUES = {'varchar': 'Allyson Lowe',
-                        'integer': 23579207,
-                        'date': '2023-11-29'}
+OPERAND_CHECK_VALUES = {'varchar': 'Xiomara Ware',
+                        'integer': 38346606,
+                        'date': '2023-07-03'}
 
 if __name__=='__main__':
     with make_conn() as cursor:

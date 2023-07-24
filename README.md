@@ -16,17 +16,13 @@ Run locally:
       postgres-test -c 'config_file=/etc/postgresql/postgresql.conf'
 
 Uploading data:
-8 000 000 строк
+20 000 000 строк
 
     $ python3 "$PWD"/inserter/main.py
-
 
 ## Performance testing PostgreSQL indexes
 
 #### Creating results table:
-| IndexType | DataType |  IndexSize  | CreationDuration | = | > | like | in   |
-|-----------|----------|-------------|------------------|---|---|------|------|
-| Hash      | varchar  |      100    |        10        | 1 |   |  1   |  2   |
 
     CREATE TABLE testdb.public.measured_time (
         IndexType    VARCHAR,
@@ -40,20 +36,25 @@ Uploading data:
     )
 
 #### Tests
-Indexes: Hash, B-tree, GIN, BRIN
-
+    $ export PYTHONPATH=$PYTHONPATH:$PWD/inserter
     $ python "$PWD"/index_performance_test/main.py
 
-#### Visualisation
-
-<!-- PNG -->
-
-Добавить гистограмму по каждому из измерений (сделать в файле, заскринить и загрузить скриншот в репозиторий, чтобы показать в ридми)
+#### Result
+| IndexType  | DataType  |  IndexSize | CreationDuration |   =   |   >   | like |   in   |
+|------------|-----------|------------|------------------|-------|-------|------|--------|
+|   brin     | varchar   |	 64 kB	  |      45.01	     | 26.49 |       | 22.7 |  24.8  | 
+|   brin	 | integer   |	 64 kB    |      30.9	     | 22.5	 | 19.1	 |	    |  23.5  |
+|   brin	 | date	     |   64 kB    |      33.79	     | 25.09 | 16.1	 |	    |  24.5  |
+|   hash	 | varchar	 |   841 MB   |      396.39	     |  0.2	 |       | 28.8	|   0.1  |
+|   hash	 | integer	 |   535 MB   |      318.2	     |  0.0	 | 28.1	 |      |   0.0  |    
+|   hash	 | date	     |   895 MB   |      2518.3	     |  4.0	 | 19.4	 |	    |   1.9  |
+|   btree	 | varchar	 |   139 MB   |      489.71	     |  0.0	 |       | 24.3 |   0.0  |
+|   btree	 | integer	 |   177 MB   |      149.9	     |  0.0	 | 18.9	 |      |   0.09 |   
+|   btree	 | date	     |   132 MB   |      176.11	     |  0.1	 |  8.8	 |      |   0.3  |
 
 ### Cleaning out container and image:
 
     docker stop test-postgres && docker rmi test-postgres
-
 
 ## Monitoring
 

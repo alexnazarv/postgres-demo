@@ -1,14 +1,20 @@
 import time
 from typing import List
 
-from connection import make_conn
+from conn import make_conn
 from psycopg2 import connect, sql
+from tqdm import tqdm
+
+from logger import create_logger, logging
+
+logger = create_logger(stream_handler=True, level=logging.INFO)
 
 TABLE_INDEXED = 'test_table'
 TABLE_STATISTIC = 'measured'
 
 COLUMNS_INDEXED = ['varchar0', 'integer0', 'date0']
-INDEXES = ['gin', 'brin', 'gist', 'bloom', 'rum', 'hash', 'btree']
+# INDEXES = ['gin', 'gist', 'bloom', 'rum', 'brin', 'hash', 'btree']
+INDEXES = ['brin', 'hash', 'btree']
 
 OPERAND_CHECK_VALUES = {'varchar': 'Allyson Lowe',
                         'integer': 23579207,
@@ -112,6 +118,7 @@ def indexes_check(index_type: str,
     for column in columns_indexed:
         datatype = column.rstrip('0')
         index_name = f'{index_type}_{datatype}'
+        logger.info('Processing %s ...', index_name)
 
         index_creation_duration = index_make_create_duration(table_indexed, index_name,
                                                              index_type, column, cursor)
